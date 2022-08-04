@@ -2,12 +2,26 @@
 
 int main(int argc, char *argv[]) {
   int c;
-  int i = 0;
+  int caracteres = 0;
+  int lineas = 0;
+  int palabras = 0;
+  int in_word;
   while ((c = getchar()) != EOF) {
-    if (c != '\n') {
-      i++;
+    if (c != '\n' && c != ' ') {
+      caracteres++;
+    }
+    if(c != '\n' && c!= 't' && c != ' ') {
+      in_word = 1;
+    } else {
+      if(in_word != 0) {
+        palabras++;
+      }
+      in_word = 0;
+    }   
+    if (c == '\n')  {
+      lineas++;
     }
   }
-  printf("%d\n", i);
+  printf("caracteres = %d\n lineas = %d\n palabras = %d\n", caracteres, lineas, palabras);
   return 0;
 }
